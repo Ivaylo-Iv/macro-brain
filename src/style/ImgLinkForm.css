@@ -1,0 +1,46 @@
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0 5%;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.form-wrapper > h2 {
+  font-size: 4rem;
+  font-family: "main-l";
+}
+
+.form-wrapper > div {
+  margin-top: 3rem;
+  display: flex;
+  width: 40%;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.28);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.7px);
+  -webkit-backdrop-filter: blur(5.7px);
+  overflow: hidden;
+  padding: 1%;
+}
+
+.form-wrapper > div > input {
+  display: block;
+  width: 80%;
+  border: none;
+  background: transparent;
+}
+
+.form-wrapper > div > button {
+  background: transparent;
+  width: 20%;
+  border: none;
+  cursor: pointer;
+}
+
+.form-wrapper > div > button,
+.form-wrapper > div > input {
+  font-size: 2rem;
+  color: #fff;
+}

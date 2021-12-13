@@ -1,5 +1,7 @@
 nav {
   min-height: 10vh;
+  background: #51a4fb;
+  box-shadow: 0px 11px 10px rgba(0, 0, 0, 0.295);
 }
 
 .in-nav {
@@ -17,18 +19,35 @@ nav {
   align-items: center;
 }
 
+.section-1 > div > img {
+  height: 6vh !important;
+  width: auto;
+}
+
 .section-1 > h1 {
   font-size: 3rem;
-  font-family: sans-serif;
   margin-left: 1rem;
+  font-family: "glitch";
 }
 
 .section-2 {
   margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.section-2 > div > h2 {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 2rem;
+}
+
+.section-2 > div > h2 > span {
+  font-size: 2.5rem;
 }
 
 .section-2 > p {
+  margin-left: 2rem;
   font-size: 2rem;
-  font-family: sans-serif;
   font-weight: 400;
 }
