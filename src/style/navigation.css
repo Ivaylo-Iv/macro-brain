@@ -20,7 +20,7 @@ nav {
 }
 
 .section-1 > div > img {
-  height: 6vh !important;
+  height: 6vh;
   width: auto;
 }
 
