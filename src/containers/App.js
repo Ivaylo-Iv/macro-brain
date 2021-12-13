@@ -15,6 +15,8 @@ class App extends React.Component {
     this.state = {
       input: "",
       imgURL: "",
+      displayImg: "none",
+      box: {},
     };
   }
 
@@ -23,16 +25,24 @@ class App extends React.Component {
   };
 
   onSubmit = (e) => {
-    this.setState({ imgURL: this.state.input });
-
-    app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input).then(
-      function (response) {
-        console.log(
-          response.outpits[0].data.regions[0].region_info.bounding_box
-        );
-      },
-      function (err) {}
-    );
+    this.setState({ imgURL: this.state.input, displayImg: "block" });
+    console.log(1);
+    app.models
+      .predict(
+        Clarifai.FACE_DETECT_MODEL /*"53e1df302c079b3db8a0a36033ed2d15"*/,
+        this.state.input
+      )
+      .then(
+        function (response) {
+          console.log(
+            response.outputs[0].data.regions[0].region_info.bounding_box
+          );
+          console.log(2);
+        },
+        function (err) {
+          console.log(err);
+        }
+      );
   };
 
   render() {
@@ -45,7 +55,10 @@ class App extends React.Component {
           onInputChange={this.onInputChange}
           onSubmit={this.onSubmit}
         />
-        <ImgDisplay imgLink={this.state.imgURL} />
+        <ImgDisplay
+          imgLink={this.state.imgURL}
+          displayI={this.state.displayImg}
+        />
       </div>
     );
   }
