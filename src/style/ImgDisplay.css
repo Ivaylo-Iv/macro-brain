@@ -1,10 +1,20 @@
 .img-display {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
-.img-display > img {
-  width: 500px;
-  height: auto;
+.img-display > div {
   margin: 0 auto;
+  position: relative;
+}
+
+.img-display div > img {
+  width: 300px;
+  height: auto;
+}
+.img-display > div > div {
+  position: absolute;
+
+  border: 3px solid rgb(0, 89, 255);
 }

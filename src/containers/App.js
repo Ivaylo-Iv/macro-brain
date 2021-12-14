@@ -20,6 +20,25 @@ class App extends React.Component {
     };
   }
 
+  calculateFaceLocation = (data) => {
+    const clarifaiFace =
+      data.outputs[0].data.regions[0].region_info.bounding_box;
+    const image = document.getElementById("inputImage");
+    const widthImg = Number(image.width);
+    const heightImg = Number(image.height);
+    console.log(widthImg, heightImg);
+    return {
+      leftCol: clarifaiFace.left_col * widthImg,
+      topRow: clarifaiFace.top_row * heightImg,
+      rightCol: widthImg - clarifaiFace.right_col * widthImg,
+      bottomRow: heightImg - clarifaiFace.bottom_row * heightImg,
+    };
+  };
+
+  displayFaceBox = (box) => {
+    this.setState({ box: box });
+  };
+
   onInputChange = (e) => {
     this.setState({ input: e.target.value });
   };
@@ -32,17 +51,10 @@ class App extends React.Component {
         Clarifai.FACE_DETECT_MODEL /*"53e1df302c079b3db8a0a36033ed2d15"*/,
         this.state.input
       )
-      .then(
-        function (response) {
-          console.log(
-            response.outputs[0].data.regions[0].region_info.bounding_box
-          );
-          console.log(2);
-        },
-        function (err) {
-          console.log(err);
-        }
-      );
+      .then((response) =>
+        this.displayFaceBox(this.calculateFaceLocation(response))
+      )
+      .catch((err) => console.log(err));
   };
 
   render() {
@@ -58,6 +70,7 @@ class App extends React.Component {
         <ImgDisplay
           imgLink={this.state.imgURL}
           displayI={this.state.displayImg}
+          box={this.state.box}
         />
       </div>
     );
