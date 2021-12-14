@@ -67,9 +67,9 @@ const BG = () => {
             enable: true,
           },
           move: {
-            direction: "right",
+            direction: "none",
             enable: true,
-            outMode: "out",
+            outMode: "bounce",
             random: false,
             speed: 3,
             straight: false,
@@ -77,7 +77,7 @@ const BG = () => {
           number: {
             density: {
               enable: true,
-              value_area: 800,
+              value_area: 500,
             },
             value: 60,
           },

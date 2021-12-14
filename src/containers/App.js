@@ -1,9 +1,13 @@
 import React from "react";
-import Navigation from "../components/Navigation";
 import ImgLinkForm from "../components/ImgLinkForm";
+import Navigation from "../components/Navigation";
+import ImgDisplay from "../components/ImgDisplay";
+import SignIn from "../components/SignIn";
+import SignUp from "../components/SignUp";
 import BG from "../components/BG";
 import Clarifai from "clarifai";
-import ImgDisplay from "../components/ImgDisplay";
+
+import "tachyons";
 
 const app = new Clarifai.App({
   apiKey: "271ea27eb02c4903ba1eb80f0523c6ed",
@@ -17,6 +21,8 @@ class App extends React.Component {
       imgURL: "",
       displayImg: "none",
       box: {},
+      route: "signin",
+      isSignedIn: false,
     };
   }
 
@@ -57,21 +63,40 @@ class App extends React.Component {
       .catch((err) => console.log(err));
   };
 
+  onRouteChange = (route) => {
+    if (route === "home") {
+      this.setState({ isSignedIn: true });
+    } else {
+      this.setState({ isSignedIn: false });
+    }
+    this.setState({ route: route });
+  };
+
   render() {
     return (
       <div className="App">
         <BG className="part" />
-        <Navigation />
-
-        <ImgLinkForm
-          onInputChange={this.onInputChange}
-          onSubmit={this.onSubmit}
+        <Navigation
+          onRouteChange={this.onRouteChange}
+          isSignedIn={this.state.isSignedIn}
         />
-        <ImgDisplay
-          imgLink={this.state.imgURL}
-          displayI={this.state.displayImg}
-          box={this.state.box}
-        />
+        {this.state.route === "home" ? (
+          <div>
+            <ImgLinkForm
+              onInputChange={this.onInputChange}
+              onSubmit={this.onSubmit}
+            />
+            <ImgDisplay
+              imgLink={this.state.imgURL}
+              displayI={this.state.displayImg}
+              box={this.state.box}
+            />
+          </div>
+        ) : this.state.route === "signin" ? (
+          <SignIn onRouteChange={this.onRouteChange} />
+        ) : (
+          <SignUp onRouteChange={this.onRouteChange} />
+        )}
       </div>
     );
   }

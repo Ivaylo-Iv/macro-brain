@@ -1,0 +1,52 @@
+.wrapper-s {
+  display: flex;
+  margin: 0 35% !important;
+  flex-direction: column;
+  margin-top: 10rem !important;
+  background: rgba(255, 255, 255, 0.28);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.7px);
+  -webkit-backdrop-filter: blur(5.7px);
+  overflow: hidden;
+  padding: 1%;
+}
+
+input[type="password"],
+input[type="email"],
+input[type="submit"],
+.text-name-i {
+  border-radius: 12px;
+  font-size: 1.5rem;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+label,
+legend {
+  color: #fff !important;
+}
+
+.alternative-text > a {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.flex-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 900px) {
+  .wrapper-s {
+    margin: 0 25% !important;
+    margin-top: 10rem !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  .wrapper-s {
+    margin: 0 15% !important;
+    margin-top: 10rem !important;
+  }
+}
