@@ -4,7 +4,7 @@ import Brain from "../img/brain.png";
 import Tilt from "react-parallax-tilt";
 import Rank from "../components/Rank";
 
-const Navigation = ({ onRouteChange, isSignedIn }) => {
+const Navigation = ({ onRouteChange, isSignedIn, nameU, entries }) => {
   if (isSignedIn) {
     return (
       <nav>
@@ -16,7 +16,7 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
             <h1>Macro Brain</h1>
           </div>
           <div className="section-2">
-            <Rank />
+            <Rank entries={entries} nameU={nameU} />
             <p onClick={() => onRouteChange("signin")}>Sign Out</p>
           </div>
         </div>
@@ -33,7 +33,7 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
             <h1>Macro Brain</h1>
           </div>
           <div className="section-2">
-            <Rank />
+            {/* <Rank /> */}
             <p onClick={() => onRouteChange("signup")}>Sign Up</p>
           </div>
         </div>
